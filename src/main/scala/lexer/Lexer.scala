@@ -1,13 +1,12 @@
 package lexer
 
 import java.util.StringTokenizer
-
 import scala.collection.mutable
 
 object Lexer {
   def lex(code: String): mutable.Queue[Token] = {
     var tokens = mutable.Queue[Token]()
-    val st = new StringTokenizer(code, "(){}, ", true)
+    val st = new StringTokenizer(code, "(){},; ", true)
 
     while (st.hasMoreTokens) tokens += matchToken(st.nextToken)
 
@@ -16,7 +15,7 @@ object Lexer {
 
   def matchToken(sToken: String): Token = {
     sToken match {
-      case "def" => new T_Def
+      case ";" => new T_Semicolon
       case "(" => new T_LeftBracket
       case ")" => new T_RightBracket
       case "," => new T_Comma
@@ -37,6 +36,6 @@ object Lexer {
   }
 
   def main(args: Array[String]): Unit = {
-    print(lex("def f(x,y,z) = { if x == y then { z } else { 0 } }"))
+    print(lex(";;{{{}}{{{ {{}}}} }}}}}}}}10 10 if if then then then else"))
   }
 }
