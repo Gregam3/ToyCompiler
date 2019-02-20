@@ -1,6 +1,8 @@
 package lexer
 
-trait Token
+trait Token {
+  override def toString = this.getClass.getName
+}
 
 class T_Def extends Token; class T_Identifier(name: String) extends Token; class T_LeftBracket extends Token; class T_Equal extends Token
 class T_RightBracket extends Token; class T_Comma extends Token; class T_Equals extends Token; class T_LeftCBracket extends Token
