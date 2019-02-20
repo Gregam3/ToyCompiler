@@ -8,17 +8,11 @@ object FiniteStateAutomata  {
   var currentState = 0
 
   def doesAccept:Boolean = {
-    for (i <- table) {
+    for (v <- table) {
       currentState match {
-        case 0 =>
-          if (i != 3) return false
-          else currentState = 1
-        case 1 =>
-          if (i == 5) currentState = 2
-          else if (i < 4 || i > 5) return false
-        case 2 =>
-          if (i == 4) currentState = 1
-          else if (i < 4 || i > 5) return false
+        case 0 => if (v != 3) return false else currentState = 1
+        case 1 => if (v == 5) currentState = 2 else if (v != 4) return false
+        case 2 => if (v == 4) currentState = 1 else if (v != 5) return false
       }
     }
     currentState == 2
