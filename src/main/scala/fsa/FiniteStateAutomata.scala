@@ -1,7 +1,7 @@
 package fsa
 
 object FiniteStateAutomata {
-  //fsa for Regex 3(45)*5
+  //fsa for Regex 3(4|5)*5
   def doesAccept(table: Array[Int]): Boolean = {
     //init = 0, accept = 1, terminal = 2
     var currentState = 0
